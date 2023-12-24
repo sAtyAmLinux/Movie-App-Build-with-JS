@@ -4,8 +4,9 @@ const ImagesMoves = "https://image.tmdb.org/t/p/w1280";
 const searchMoves =
   "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
-const moviesShow = document.querySelector(".container");
-const searchInput = document.querySelector("#search");
+const moviesShow = document.querySelector(".container"); // Use querySelector for a single element
+const searchInput = document.querySelector("#search"); // Use querySelector for a single element
+
 const getMovies = async (api) => {
   const response = await fetch(api);
   const data = await response.json();
@@ -16,7 +17,7 @@ getMovies(MostPopularMoves);
 const ShowMoves = (data) => {
   moviesShow.innerHTML = "";
 
-  //   console.log(data);
+  // console.log(data);
 
   data.results.forEach((result) => {
     const box = document.createElement("div");
@@ -39,7 +40,7 @@ const ShowMoves = (data) => {
 };
 
 searchInput.addEventListener("keyup", function (event) {
-  if (event.target.value != "") {
+  if (event.target.value !== "") {
     getMovies(searchMoves + event.target.value);
   } else {
     getMovies(MostPopularMoves);
